@@ -18,28 +18,28 @@ public class AoC_D3_P1 {
 
         int binaryLength = binaries.get(0).length();
 
-        String gammaRate = "";
-        String epsilonRate = "";
+        StringBuilder gammaRate = new StringBuilder();
+        StringBuilder epsilonRate = new StringBuilder();
 
         for (int col = 0; col < binaryLength; col++) {
 
             int zeroBits = 0;
             int oneBits = 0;
 
-            for (int row = 0; row < binaries.size(); row++) {
+            for (String binary : binaries) {
 
-                if (binaries.get(row).charAt(col) == '0') {
+                if (binary.charAt(col) == '0') {
                     zeroBits++;
                 } else {
                     oneBits++;
                 }
             }
 
-            gammaRate += oneBits > zeroBits ? "1" : "0";
-            epsilonRate += oneBits < zeroBits ? "1" : "0";
+            gammaRate.append(oneBits > zeroBits ? "1" : "0");
+            epsilonRate.append(oneBits < zeroBits ? "1" : "0");
         }
 
-        System.out.println(Integer.parseInt(gammaRate, 2) * Integer.parseInt(epsilonRate, 2));
+        System.out.println(Integer.parseInt(gammaRate.toString(), 2) * Integer.parseInt(epsilonRate.toString(), 2));
 
     }
 }
